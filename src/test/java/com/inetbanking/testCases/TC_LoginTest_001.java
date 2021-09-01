@@ -9,9 +9,7 @@ import java.io.IOException;
 public class TC_LoginTest_001 extends BaseClass {
 
     @Test
-    public void loginTest() throws IOException {
-
-        logger.info("Url is opened");
+    public void loginTest() throws IOException, InterruptedException {
 
         LoginPage lp = new LoginPage(driver);
         lp.setUserName(username);
