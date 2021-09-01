@@ -18,6 +18,7 @@ import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
 public class BaseClass {
@@ -53,6 +54,8 @@ public class BaseClass {
                 break;
         }
 
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+        driver.get(baseURL);
 
     }
 

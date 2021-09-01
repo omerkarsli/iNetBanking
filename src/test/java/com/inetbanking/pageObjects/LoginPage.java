@@ -2,6 +2,7 @@ package com.inetbanking.pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,13 +16,20 @@ public class LoginPage {
     }
 
     @FindBy(name="uid")
+    @CacheLookup
     WebElement txtUserName;
 
     @FindBy(name="password")
+    @CacheLookup
     WebElement txtPassword;
 
     @FindBy(name="btnLogin")
+    @CacheLookup
     WebElement btnLogin;
+
+    @FindBy(xpath = "/html/body/div[3]/div/ul/li[10]/a")
+    @CacheLookup
+    WebElement lnkLogOut;
 
     public void setUserName(String uname) {
         txtUserName.sendKeys(uname);
@@ -31,7 +39,13 @@ public class LoginPage {
         txtPassword.sendKeys(pwd);
     }
 
-    public void clickSubmit(){
+    public void clickSubmit() throws InterruptedException {
         btnLogin.click();
+        Thread.sleep(3000);
+    }
+
+    public void logOut() throws InterruptedException {
+        lnkLogOut.click();
+        Thread.sleep(3000);
     }
 }
